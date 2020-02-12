@@ -1,7 +1,7 @@
 import java.io.*;  // Import the File class
 import java.util.*; // Import the Scanner class to read text files
 
-public class OnlyChr_Selection{
+public class 0.OnlyChr_Selection{
   public static void main(String[] args) {
     try {
       File myObj = new File("Zea_mays.AGPv4.dna.toplevel.fa");
