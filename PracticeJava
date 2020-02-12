@@ -1,9 +1,9 @@
 // 1. Compile : javac filename.java
 // 2. java filename
+//https://www.w3schools.com/java/java_files_read.asp
 
 -----------------------------------------------
 //Read file
-//https://www.w3schools.com/java/java_files_read.asp
 
 
 import java.io.File;  // Import the File class
