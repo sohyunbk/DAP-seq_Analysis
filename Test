@@ -1,0 +1,8 @@
+DAPseq/DAP_project_GENE8940/dapscript_subdirs.s
+module load SAMtools/1.10-GCC-8.2.0-2.31.1
+
+sort -O 'bam' -o SRX3786374_sorted.bam SRX3786374.sam
+
+
+ samtools sort -@ 10 -O 'bam' -o \${base}.sorted.bam -T ${a}/tmp \${base}.sam
+ samtools view -q 30 \${base}.sorted.bam -o \${base}.sorted.filtered.bam
