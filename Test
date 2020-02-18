@@ -4,14 +4,25 @@ module load SAMtools/1.10-GCC-8.2.0-2.31.1
 samtools sort -O 'bam' -o SRX3786375_sorted.bam SRX3786375.sam 
 ## log 생성해놓기?.. 그러기엔 결과 라인이 [bam_sort_core] merging from 4 files and 1 in-memory blocks...
 이거 밖에 없음
-samtools view -q 30 SRX3786375_sorted.bam -o SRX3786375.sorted.filtered.bam 
+samtools view -q 30 SRX3786375_sorted.bam -o SRX3786375.sorted.filtered.bam
 #결과라인 아무것도 안나옴...
-
+bedtools bamtobed -i SRX3786375.sorted.filtered.bam > SRX3786375.bed
 
 samtools sort -@ 10 -O 'bam' -o \${base}.sorted.bam -T ${a}/tmp \${base}.sam
  
 samtools view -q 30 \${base}.sorted.bam -o \${base}.sorted.filtered.bam
-
+module load BEDTools/2.28.0-foss-2018a
+module load ucsc/359
+for GSTfile2 in ${BASEDIR}/*.sorted.filtered.bam
+do
+  base=${BASEDIR}/$(basename ${GSTfile2} .sorted.filtered.bam)
+  #convert bam file to bed file
+  bedtools bamtobed -i $GSTfile2 > ${base}.bed
+  #calculate genomecoverage
+  bedtools genomecov -i ${base}.bed -split -bg -g $BASEDIR/${reference}.chrom.sizes > ${base}.bg
+  #make bigwig file for JBrowse visualization
+  wigToBigWig ${base}.bg ${BASEDIR}/${reference}.chrom.sizes ${base}.bw
+done
 
 java -Xmx20G -jar /home/tinaeth/gem/gem.jar --d /home/tinaeth/gem/Read_Distribution_default.txt \
 --g ${BASEDIR}/${reference}.chrom.sizes --genome ${BASEDIR}/${reference}_chromosomes/ --f BED \
