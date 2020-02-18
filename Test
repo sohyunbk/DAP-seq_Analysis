@@ -1,10 +1,11 @@
 DAPseq/DAP_project_GENE8940/dapscript_subdirs.s
 module load SAMtools/1.10-GCC-8.2.0-2.31.1
 
-sort -O 'bam' -o SRX3786374_sorted.bam SRX3786374.sam 
+samtools sort -O 'bam' -o SRX3786375_sorted.bam SRX3786375.sam 
 ## log 생성해놓기?.. 그러기엔 결과 라인이 [bam_sort_core] merging from 4 files and 1 in-memory blocks...
 이거 밖에 없음
-samtools view -q 30 SRX3786374_sorted.bam -o SRX3786374.sorted.filtered.bam #결과라인 아무것도 안나옴...
+samtools view -q 30 SRX3786375_sorted.bam -o SRX3786375.sorted.filtered.bam 
+#결과라인 아무것도 안나옴...
 
 
 samtools sort -@ 10 -O 'bam' -o \${base}.sorted.bam -T ${a}/tmp \${base}.sam
