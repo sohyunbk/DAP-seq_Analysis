@@ -18,4 +18,7 @@ java -Xmx20G -jar /home/tinaeth/gem/gem.jar --d /home/tinaeth/gem/Read_Distribut
 --expt ${GST} --out ${base}_negative_peaks --t $PBS_NUM_PPN --k_min 6 --k_max 20 --outNP --sl
 
 
-java -Xmx20G -jar ./gem/gem.jar --d ./gem/Read_Distribution_default.txt --g ../0.Reference/Zea_mays.AGPv4.dna.toplevel_OnlyChr.chrom.sizes --genome ../0.Reference/Zea_mays.AGPv4.dna.toplevel_OnlyChr/ --f BED --expt ${GST} --out ${base}_negative_peaks --t $PBS_NUM_PPN --k_min 6 --k_max 20 --outNP --sl
+java -Xmx20G -jar ./gem/gem.jar --d ./gem/Read_Distribution_default.txt \
+--g ../0.Reference/Zea_mays.AGPv4.dna.toplevel_OnlyChr.chrom.sizes \
+--genome ../0.Reference/Zea_mays.AGPv4.dna.toplevel_OnlyChr/ --f BED \
+--ctrl SRX3786375.bed --expt SRX3786374.bed --out ./SRX3786374 --t 24 --k_min 6 --k_max 20 --outNP --sl
