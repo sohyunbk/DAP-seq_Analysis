@@ -1,1 +1,3 @@
 https://bioinformatics-core-shared-training.github.io/cruk-summer-school-2018/ChIP/Practicals/Practical5_ChIPQC_DB.html
+
+samples <- read.csv("Soybean_ChIPQC.csv")
